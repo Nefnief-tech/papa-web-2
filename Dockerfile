@@ -1,7 +1,15 @@
 FROM node:16-alpine
 
+RUN apk install --no-cache git
+
+RUN git clone https://github.com/Nefnief-tech/papa-web-2.git
+RUN cd papa-web-2
+
+
 RUN mkdir -p /var/www/dockerize-nuxt/nuxt-app
 WORKDIR /var/www/dockerize-nuxt/nuxt-app
+
+
 
 COPY package*.json ./
 RUN npm install
