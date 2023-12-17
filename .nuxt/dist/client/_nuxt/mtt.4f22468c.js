@@ -1,0 +1,10 @@
+import{B as u,S as f,D as m,l as p,m as n,F as h,C as b,I as r,k as g}from"./entry.79c549bd.js";import{_ as w}from"./_plugin-vue_export-helper.c27b6911.js";const s=new b;s.setEndpoint("https://appwrite.nief.tech/v1").setProject("65254ba2c6d13ae30a67");const _=new u(s);new f(s);const d=new m(s);function v(){_.getSession("current").then(function(t){console.log(t)},function(t){console.log(t),window.location.href="/login"})}function x(){let c=document.getElementById("input").value;d.createDocument("6525a3104c1b6602d0ef","6525a31a6d23271d8dff",r.unique(),{card:c}).then(function(e){console.log(e);let i=e.$id,l="";e.documents&&e.documents.forEach(o=>{l+=o.card}),d.createDocument("6525a3104c1b6602d0ef","6525a31a6d23271d8dff",r.unique(),{employeeID:i,card:e.card}).then(function(o){console.log(o)},function(o){console.log(o)})},function(e){console.log(e)})}const y={mounted(){v();const c=d.getDocument("6525a3104c1b6602d0ef","6525a31a6d23271d8dff","6525b6390c27800f5b88");let t=document.getElementById("ct");c.then(function(e){console.log(e),t.innerText=e.card},function(e){console.log(e)})},methods:{createCard:x}},C=n("h1",{class:"text-3xl font-bold text-center"},"Mitarbeiter",-1),B=n("div",{class:"center"},[n("div",{class:"mockup-code mb-10 w-2/4 mt-10"},[n("pre",{"data-prefix":"$"},[n("code",null,`<div class="card w-96 bg-base-100 shadow-xl">
+       <div class="card-body">
+        <h2 class="card-title">Card title!</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions justify-end">
+       <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+`)])])],-1),D={class:"center"},I=n("input",{type:"text",placeholder:"Type here",class:"input input-bordered input-accent w-full max-w-xs",id:"input"},null,-1);function k(c,t,e,i,l,a){return g(),p(h,null,[C,B,n("div",D,[n("div",null,[I,n("button",{class:"btn btn-primary mt-5",onClick:t[0]||(t[0]=(...o)=>a.createCard&&a.createCard(...o))}," Create Card ")])])],64)}const $=w(y,[["render",k]]);export{$ as default};
