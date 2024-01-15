@@ -154,6 +154,40 @@ z"
       </li>
     </ul>
   </div>
+
+  <!--lockdown buttons-->
+
+  <div class="center mt-20">
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h1 class="text-center text-3xl font-black mb-10">Lockdown Settings</h1>
+        <div class="center">
+          <div class="badge badge-accent center unlocked">unlocked</div>
+          <div class="badge badge-error center locked">locked</div>
+        </div>
+        <div class="center">
+          <div class="btn-group">
+            <button
+              class="btn btn-error m-10"
+              onclick="lockdown('yes')"
+              id="lockdown-yes"
+              @click="setStatus('yes')"
+            >
+              Lock
+            </button>
+            <button
+              class="btn btn-accent m-10"
+              onclick="lockdown('no')"
+              id="lockdown-no"
+              @click="setStatus('no')"
+            >
+              Unlock
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -178,6 +212,60 @@ promise2.then(
   function (error) {
     console.log(error); // Failure
     window.location.href = "/login";
+  }
+);
+
+export default {
+  setup() {
+    const status = ref(""); // Define status to store the string from the database
+
+    onMounted(async () => {
+      try {
+        const response = await databases.getDocument(
+          "collectionId",
+          "documentId"
+        );
+        status.value = response.status; // Assume the string is stored in the status field
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    const setStatus = async (newStatus) => {
+      try {
+        await databases.updateDocument("111", "111", "111", {
+          lockdawn: newStatus,
+        });
+        status.value = newStatus;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    return {
+      status,
+      setStatus,
+    };
+  },
+};
+
+const promise = databases.getDocument("111", "111", "111");
+
+promise.then(
+  function (response) {
+    console.log(response); // Success
+    if (response.lockdawn == "no") {
+      console.log("true");
+      document.querySelector(".locked").style.display = "none";
+      document.querySelector(".unlocked").style.display = "block";
+    } else {
+      console.log("false");
+      document.querySelector(".locked").style.display = "block";
+      document.querySelector(".unlocked").style.display = "none";
+    }
+  },
+  function (error) {
+    console.log(error); // Failure
   }
 );
 </script>

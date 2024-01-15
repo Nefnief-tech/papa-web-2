@@ -73,7 +73,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in tableData" :key="index">
+        <tr v-for="(item, index) in TD" :key="index">
           <th>{{ index + 1 }}</th>
           <td>{{ item.name }}</td>
           <td>{{ item.$id }}</td>
@@ -185,7 +185,7 @@ export default {
 
 //table
 
-function getTableData() {
+function TD() {
   const promise = databases.listDocuments(
     "6525a3104c1b6602d0ef",
     "6525a31a6d23271d8dff"
