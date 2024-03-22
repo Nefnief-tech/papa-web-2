@@ -15,7 +15,18 @@
       We are sorry but right now our website is not available! <br />
       Please try again later!
     </p>
+    <!--Loginform / password for unlocking the webside without the need of adminpanel -->
+
+    <div class="center mt-20">
+      <input
+        type="password"
+        placeholder="Password to unlock the website"
+        class="input input-bordered input-accent w-full max-w-xs"
+        v-model="password"
+      />
+    </div>
   </div>
+
   <!--begin normal page-->
 
   <div class="normal">
@@ -59,6 +70,8 @@ promise.then(
     console.log(error); // Failure
   }
 );
+
+// unlock of webside with password
 </script>
 
 <style></style>
