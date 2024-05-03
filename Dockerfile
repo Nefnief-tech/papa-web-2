@@ -1,6 +1,5 @@
-FROM alpine:3.18
+FROM node:16-alpine
 
-ENV NODE_VERSION 22.1.0
 
 
 RUN apk add git
