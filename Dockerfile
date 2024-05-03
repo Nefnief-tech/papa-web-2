@@ -1,4 +1,6 @@
-FROM arm64v8/node:16-alpine
+FROM alpine:3.18
+
+ENV NODE_VERSION 22.1.0
 
 
 RUN apk add git
