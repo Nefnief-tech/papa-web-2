@@ -1,4 +1,4 @@
-FROM arm64v8/node:16-alpine
+FROM luuviethai/node-16-alpine
 
 
 RUN apk add git
